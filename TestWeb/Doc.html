@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="Doc.css">
+        <meta charset="utf-8">
+    <title>Minds factory</title>
+
+    </head>
+    <body>
+        <div class="flex-container">
+            <div class="flex-left" >
+                <nav>
+                    <header><h1>Request Documentation</h1></header>
+                    <ul class="ul">
+                        <li class="list"><a href="#qt">Quickstart</a></li>
+                        <li class="list"><a href="#mq">Make a Request</a></li>
+                        <li class="list"><a href="#ppiu">Passing Parameters In URLs</a></li>
+                        <li class="list"><a href="#rs">Responcse Content</a></li>
+                        <li class="list"><a href="#brc">Binary Response Content</a></li>
+                        <li class="list"><a href="#jrc">JSON Response Content</a></li>
+                        <li class="list"><a href="#rrc">Raw Response Content</a></li>
+                        <li class="list"><a href="#qt"></a>Custom Headers</li>
+                        <li class="list"><a href="#qt"></a>More complicated POST requests</li>
+                        <li class="list"><a href="#qt"></a>POST a Multipart-Encoded File</li>
+                        <li class="list"><a href="#qt"></a>Response Status Codes</li>
+                        <li class="list"><a href="#qt"></a>Response Headers</li>
+                        <li class="list"><a href="#qt"></a>Cookies</li>
+                        <li class="list"><a href="#qt"></a>redirection and History</li>
+                        <li class="list"><a href="#qt"></a>Timeouts</li>
+                        <li class="list"><a href="#qt"></a>Errors and Exceptions</li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="flex-right">
+                <article>
+                <h1 ><a name="qt">Quickstart</a></h1><p class="big-dif">
+                Eager to get started? This page gives a good introduction in how to get started with Requests.
+                <br>First, make sure that:</p>
+                <ul>
+                    <li>Request is <ins><a href="https://requests.readthedocs.io/en/latest/user/install/#install">installed</a></ins></li>
+                    <li>Request is <ins><a href="https://requests.readthedocs.io/en/latest/community/updates/#updates">up-to-date</a></ins></li>
+                </ul>
+                <br>Let`s get started with some simple examples.
+                <h1><a name="mq"></a>Make a Request</h1><p class="big-dif">
+                Making a request with Requests is very simple.
+                <br>Begin by importing the Requests module:
+                <br>Now, let’s try to get a webpage. For this example, let’s get GitHub’s public timeline:
+                <br>Now, we have a <b>Response</b> object called r. We can get all the information we need from this object.
+                <br>Requests’ simple <span class="dotted">API</span>means that all forms of <span class="dotted">HTTP</span> request are as obvious. For example, this is how you make an HTTP <u><a href="https://ru.wikipedia.org/wiki/POST_(HTTP)">POST</a></u> request:
+                <br>Nice, right? What about the other HTTP request types: PUT, DELETE, HEAD and OPTIONS? These are all just as simple:
+                <br>That’s all well and good, but it’s also only the start of what Requests can do.
+                    </p>
+                <h1><a name="ppiu"></a>Passing Parameters In URLs</h1>
+                <p>
+                You often want to send some sort of data in the URL’s query string. If you were constructing the URL by hand, this data would be given as key/value pairs in the URL after a question mark, e.g. <tt>httpbin.org/get?key=val.</tt>Requests allows you to provide these arguments as a dictionary of strings, using the <tt>params</tt> keyword argument. As an example, if you wanted to pass <tt>key1=value1</tt> and <tt>key2=value2</tt> to <tt>httpbin.org/get</tt>, you would use the following code:
+                    <p class="big-dif">
+                        <br>You can see that the URL has been correctly encoded by printing the URL:
+                        <br>Note that any dictionary key whose value is None will not be added to the URL’s query string.
+                        <br>You can also pass a list of items as a value:
+                    </p>
+                </p>
+                <h1><a name="rc"></a>Response Content</h1>
+                <p>
+                    We can read the content of the server’s response. Consider the GitHub timeline again:
+                </p>
+                <p>
+                    Requests will automatically decode content from the server. Most unicode charsets are seamlessly decoded.
+                </p>
+                <p>
+                    When you make a request, Requests makes educated guesses about the encoding of the response based on the HTTP headers. The text encoding guessed by Requests is used when you access<tt>r.text</tt>. You can find out what encoding Requests is using, and change it, using the<tt>r.encoding</tt> property:
+                </p>
+                <p>
+                    If you change the <tt>encoding</tt>, Requests will use the new value of <tt>r.encoding</tt>whenever you call <tt>r.text</tt>. You might want to do this in any situation where you can apply special logic to work out what the <tt>encoding</tt> of the content will be. For example, HTML and XML have the ability to specify their encoding in their body. In situations like this, you should use <tt>r.content</tt> to find the encoding, and then set <tt>r.encoding</tt>. This will let you use r.text with the correct encoding.
+                </p>
+                <p>Requests will also use custom <tt>encodings</tt> in the event that you need them. If you have created your own <tt>encoding</tt> and registered it with the <tt>codecs</tt> module, you can simply use the <tt>codec</tt> name as the value of <tt>r.encoding</tt> and Requests will handle the decoding for you.</p>
+                <h1><a name="brc"></a>Binary Response Content</h1>
+                <p class="big-dif">
+                    <br>You can also access the response body as bytes, for non-text requests:
+                    <br>The <tt>gzip</tt> and <tt>deflate</tt> transfer-encodings are automatically decoded for you.
+                    <br>The <tt>br</tt> transfer-encoding is automatically decoded for you if a Brotli library like<u><a href="https://pypi.org/project/Brotli/">brotli</a></u> or<u><a href="https://pypi.org/project/brotlicffi/">brotlicffi</a></u> is installed.
+                    <br>For example, to create an image from binary data returned by a request, you can use the following code:
+                </p>    
+                <h1><a name="jrc"></a>JSON Response Content</h1>
+                
+                    <p>There’s also a builtin <span class="dotted">JSON</span> decoder, in case you’re dealing with JSON data:</p>
+                    <p>In case the JSON decoding fails, <tt>r.json()</tt> raises an exception. For example, if the response gets a 204 (No Content), or if the response contains invalid JSON, attempting <tt>r.json()</tt> raises <tt>requests.exceptions.JSONDecodeError.</tt> This wrapper exception provides interoperability for multiple exceptions that may be thrown by different python versions and json serialization libraries.</p>
+                    <p>It should be noted that the success of the call to <tt>r.json()</tt>does <b>not</b> indicate the success of the response. Some servers may return a JSON object in a failed response (e.g. error details with HTTP 500). Such JSON will be decoded and returned. To check that a request is successful, use <tt>r.raise_for_status()</tt> or check <tt>r.status_code</tt> is what you expect.</p>
+               
+                <h1><a name="rrc"></a>Raw Response Content</h1>
+               <p> In the rare case that you’d like to get the <tt>raw</tt> socket response from the server, you can access r.raw. If you want to do this, make sure you setstream=True in your initial request. Once you do, you can do this:</p>
+                <p>In general, however, you should use a pattern like this to save what is being streamed to a file:</p>
+                <p>Using <tt>Response.iter_content</tt> will handle a lot of what you would otherwise have to handle when using Response.raw directly. When streaming a download, the above is the preferred and recommended way to retrieve the content. Note that chunk_size can be freely adjusted to a number that may better fit your use cases.</p>
+                <dl>
+                    <h2><b>Note:</b></h2>
+                    <p>
+                        An important note about using <tt>Response.iter_content</tt> versus <tt>Response.raw.Response.iter_content</tt> will automatically decode the <tt>gzip</tt> and deflate transfer-encodings. <tt>Response.raw</tt> is a raw stream of bytes – it does not transform the response content. If you really need access to the bytes as they were returned, use <tt>Response.raw.</tt>
+                    </p>
+                </dl>
+            </article>
+            </div>
+        </div>
+    </body>
+</html>
