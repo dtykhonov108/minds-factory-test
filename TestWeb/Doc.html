@@ -19,15 +19,15 @@
                         <li class="list"><a href="#brc">Binary Response Content</a></li>
                         <li class="list"><a href="#jrc">JSON Response Content</a></li>
                         <li class="list"><a href="#rrc">Raw Response Content</a></li>
-                        <li class="list"><a href="#qt"></a>Custom Headers</li>
-                        <li class="list"><a href="#qt"></a>More complicated POST requests</li>
-                        <li class="list"><a href="#qt"></a>POST a Multipart-Encoded File</li>
-                        <li class="list"><a href="#qt"></a>Response Status Codes</li>
-                        <li class="list"><a href="#qt"></a>Response Headers</li>
-                        <li class="list"><a href="#qt"></a>Cookies</li>
-                        <li class="list"><a href="#qt"></a>redirection and History</li>
-                        <li class="list"><a href="#qt"></a>Timeouts</li>
-                        <li class="list"><a href="#qt"></a>Errors and Exceptions</li>
+                        <li class="list"><a href="#ch">Custom Headers</a></li>
+                        <li class="list"><a href="#mcpr">More complicated POST requests</a></li>
+                        <li class="list"><a href="#mef">POST a Multipart-Encoded File</a></li>
+                        <li class="list"><a href="#rsc">Response Status Codes</a></li>
+                        <li class="list"><a href="#rh">Response Headers</a></li>
+                        <li class="list"><a href="#cooc">Cookies</a></li>
+                        <li class="list"><a href="#rah">redirection and History</a></li>
+                        <li class="list"><a href="#time">Timeouts</a></li>
+                        <li class="list"><a href="#eae">Errors and Exceptions</a></li>
                     </ul>
                 </nav>
             </div>
@@ -96,6 +96,153 @@
                         An important note about using <tt>Response.iter_content</tt> versus <tt>Response.raw.Response.iter_content</tt> will automatically decode the <tt>gzip</tt> and deflate transfer-encodings. <tt>Response.raw</tt> is a raw stream of bytes – it does not transform the response content. If you really need access to the bytes as they were returned, use <tt>Response.raw.</tt>
                     </p>
                 </dl>
+                <h1><a name="ch"></a>Custom Headers</h1>
+                <p>
+                    If you’d like to add HTTP headers to a request, simply pass in a dict to theheaders parameter.
+                </p>
+                <p>
+                    For example, we didn’t specify our user-agent in the previous example:
+                </p>
+                <p>
+                    Note: Custom headers are given less precedence than more specific sources of information. For instance:
+                </p>
+                <ul>
+                    <li>Authorization headers set with headers= will be overridden if credentials are specified in .netrc, which in turn will be overridden by theauth= parameter. Requests will search for the netrc file at~/.netrc, ~/_netrc, or at the path specified by theNETRC environment variable.</li>
+                    <li>Authorization headers will be removed if you get redirected off-host.</li>
+                    <li>Proxy-Authorization headers will be overridden by proxy credentials provided in the URL</li>
+                    <li>Content-Length headers will be overridden when we can determine the length of the content</li>
+                </ul>
+                <p>Furthermore, Requests does not change its behavior at all based on which custom headers are specified. The headers are simply passed on into the final request.</p>
+                <p>
+                    Note: All header values must be a string, bytestring, or unicode. While permitted, it’s advised to avoid passing unicode header values.
+                </p>
+                <h1><a name="mcpr"></a>More complicated POST requests</h1>
+                <p>
+                    Typically, you want to send some form-encoded data — much like an HTML form. To do this, simply pass a dictionary to the data argument. Your dictionary of data will automatically be form-encoded when the request is made:
+                </p>
+                <p>
+                    The data argument can also have multiple values for each key. This can be done by making data either a list of tuples or a dictionary with lists as values. This is particularly useful when the form has multiple elements that use the same key:
+                </p>
+                <p>
+                    There are times that you may want to send data that is not form-encoded. If you pass in a string instead of a dict, that data will be posted directly.
+                </p>
+                <p>
+                    For example, the GitHub API v3 accepts JSON-Encoded POST/PATCH data:
+                </p>
+                <p>
+                    Please note that the above code will NOT add the Content-Typeheader (so in particular it will NOT set it to application/json).
+                </p>
+                <p>
+                    If you need that header set and you don’t want to encode the dict yourself, you can also pass it directly using the json parameter (added in version 2.4.2) and it will be encoded automatically:
+                </p>
+                <p>
+                    Note, the json parameter is ignored if either data or files is passed.
+                </p>
+                <h1><a name="mef"></a>POST a Multipart-Encoded File</h1>
+                <p>
+                    Requests makes it simple to upload Multipart-encoded files:
+                </p>
+                <p>
+                    You can set the filename, content_type and headers explicitly:
+                </p>
+                <p>
+                    If you want, you can send strings to be received as files:
+                </p>
+                <p>
+                    In the event you are posting a very large file as a multipart/form-data request, you may want to stream the request. By default, requests does not support this, but there is a separate package which does - requests-toolbelt. You should read the toolbelt’s documentation for more details about how to use it.
+                </p>
+                <p>
+                    For sending multiple files in one request refer to theadvanced section.
+                </p>
+                <dl>
+                    <h2>Warning:</h2>
+                    <p>
+                        It is strongly recommended that you open files inbinary mode. This is because Requests may attempt to provide the Content-Length header for you, and if it does this value will be set to the number of bytes in the file. Errors may occur if you open the file in text mode
+                    </p>
+                </dl>
+                <h1><a name="rsc"></a>Response Status Codes</h1>
+                <p>
+                    We can check the response status code:
+                 </p>       
+                   <p> Requests also comes with a built-in status code lookup object for easy reference:</p>
+
+                   <p> If we made a bad request (a 4XX client error or 5XX server error response), we can raise it with Response.raise_for_status():
+                </p>
+                   <p>But, since our status_code for r was 200, when we callraise_for_status() we get:</p> 
+
+                    <p>All is well.
+                </p>
+                <h1><a name="rh"></a>Response Headers</h1>
+                <p>
+                    We can view the server’s response headers using a Python dictionary
+                </p>
+                <p>
+                    The dictionary is special, though: it’s made just for HTTP headers. According toRFC 7230, HTTP Header names are case-insensitive
+                </p>
+                <p>
+                    So, we can access the headers using any capitalization we want:
+                </p>
+                <p>
+                    It is also special in that the server could have sent the same header multiple times with different values, but requests combines them, so they can be represented in the dictionary within a single mapping, as per RFC 7230:
+                </p>
+                <p>
+                   <blockquote> A recipient MAY combine multiple header fields with the same field name into one “field-name: field-value” pair, without changing the semantics of the message, by appending each subsequent field value to the combined field value in order, separated by a comma.</blockquote>
+                </p>
+                <h1><a name="cooc"></a>Cookies</h1>
+                <p>
+                    If a response contains some Cookies, you can quickly access them:
+                </p>
+                <p>
+                    To send your own cookies to the server, you can use the cookies parameter:
+                </p>
+                <p>
+                    Cookies are returned in a RequestsCookieJar, which acts like a dict but also offers a more complete interface, suitable for use over multiple domains or paths. Cookie jars can also be passed in to requests:
+                </p>
+                <h1><a name="rah"></a>Redirection and History</h1>
+                <p>
+                    By default Requests will perform location redirection for all verbs except HEAD.
+                </p>
+                <p>
+                    We can use the history property of the Response object to track redirection.
+                </p>
+                <p>
+                    The Response.history list contains the Response objects that were created in order to complete the request. The list is sorted from the oldest to the most recent response.
+                </p>
+                <p>
+                    For example, GitHub redirects all HTTP requests to HTTPS:
+                </p>
+                <p>
+                    If you’re using GET, OPTIONS, POST, PUT, PATCH or DELETE, you can disable redirection handling with the allow_redirects parameter:
+                </p>
+                <p>
+                    f you’re using HEAD, you can enable redirection as well:
+                </p>
+                <h1><a name="time"></a>Timeouts</h1>
+                <p>
+                    You can tell Requests to stop waiting for a response after a given number of seconds with thetimeout parameter. Nearly all production code should use this parameter in nearly all requests. Failure to do so can cause your program to hang indefinitely:
+                </p>
+                <dl>
+                    <h2>Note:</h2>
+                    <p>
+                        timeout is not a time limit on the entire response download; rather, an exception is raised if the server has not issued a response for timeout seconds (more precisely, if no bytes have been received on the underlying socket for timeout seconds). If no timeout is specified explicitly, requests do not time out.
+                    </p>
+                </dl>
+                <h1><a name="eae"></a>Errors and Exceptions</h1>
+                <p>
+                    In the event of a network problem (e.g. DNS failure, refused connection,etc), Requests will raise a ConnectionErrorexception.
+                </p>
+                <p>
+                    Response.raise_for_status() will raise anHTTPError if the HTTP request returned an unsuccessful status code.
+                </p>
+                <p>
+                    If a request times out, a Timeout exception is raised.
+                </p>
+                <p>
+                    If a request exceeds the configured number of maximum redirections, a TooManyRedirects exception is raised.
+                </p>
+                <p>
+                    All exceptions that Requests explicitly raises inherit fromrequests.exceptions.RequestException.
+                </p>
             </article>
             </div>
         </div>
