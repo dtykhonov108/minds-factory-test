@@ -1,0 +1,87 @@
+body{
+    background-color: lightgrey;
+    font-family: sans-serif;
+    font-size: medium;
+    
+}
+.div-head{
+   width: 800px;
+    background-color: white;
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    position:fixed;
+}
+.buttonOnHead{
+    padding: 10px 20px;
+    margin-top: 25px;
+    margin-left: 10px;
+    margin-right: 20px;
+    border-radius: 5px;
+    border: black 1px solid;
+    background-color: whitesmoke;
+    font-size: 16px;
+}
+header{
+    background-color: white;
+    width: 800px;
+    height: 100px;
+    display:block; 
+    text-align: right;
+    margin-left: auto;
+    margin-right: auto;
+    position: fixed;
+    top:10px;
+    left:275px;
+    z-index: 1;
+    box-shadow: 5px 5px 5px darkgray;
+}
+.div-main{
+    width: 740px;
+    height: auto;
+    margin-top: 120px;
+    background-color: white;
+    padding: 30px;
+  
+    margin-left: auto;
+    margin-right: auto;
+    
+    box-shadow: 5px 5px 5px darkgray;
+}
+footer{
+    margin-top: 10px;
+    background-color: white;
+    width: 740px;
+    margin-left: auto;
+    margin-right: auto;
+    padding:30px;
+    box-shadow: 5px 5px 5px darkgray;
+}
+.div-parent{
+    display:flex;
+    justify-content: space-between;
+    height: 100%;
+}
+.div-child{
+    columns:2 ;
+    column-rule-width: 100px;
+}
+a{
+    color: rgb(88, 87, 87);  
+}
+a:hover{
+    color:white;
+    background-color: rgb(43, 42, 42);
+    border-radius: 5px;
+}
+img:hover{
+    border: 2px orangered solid;
+    box-shadow: 3px 3px 3px orange;
+}
+.buttonOnHead:hover{
+    background-color: rgb(88, 86, 86);  
+    color:white;
+}
+.a-head:hover{
+    background-color: white;
+}
