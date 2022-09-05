@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="Form.css">
+        <meta charset="utf-8">
+    <title>Minds factory</title>
+
+    </head>
+    <body>
+        <div class="divForm">
+            <h1 align="center">Your personal Form</h1>
+            <p><h2 align="center">Thank you for taking the time to improve your skills</h2></p>
+            <br>
+            <br>Name:
+            <br><input class="in" placeholder="Enter your name">
+            <br>E-mail:
+            <br><input class="in" placeholder="Enter your e-mail">
+            <br>Age(optional):
+            <br><input class="in" placeholder="Enter your age">
+            <br>Which option best describes your currnet role?
+            <br><select name="NAME" >
+                <option selected disabled>Select your current role</option>
+                <option>Student</option>
+                <option>Full time job</option>
+                <option>Full time learner</option>
+            </select>
+            <form>
+            <p>Would you recommend Andrew to a friend?</p>
+            <div class="inrad">
+                <input type="radio" id="recomended1" name="rec" value="Definitely">
+                <label for="recomneded1">Definitely</label>
+                <br><input type="radio" id="recomended2" name="rec" value="Maybe">
+                <label for="recomneded2">Maybe</label>
+                <br><input type="radio" id="recomended3" name="rec" value="Not sure">
+                <label for="recomneded3">Not sure</label>
+            </div>
+            
+             </form>
+             <fieldset>
+               <legend>What would you like to see improved? (Check all that apply)</legend>
+                <div>
+                    <input type="checkbox" name="Front-end prodjects" id="Front-end prodjects">
+                    <label id="Front-end prodjects">Front-end prodjects</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="Back-end prodjects" id="Back-end prodjects">
+                    <label id="Back-end prodjects">Back-end prodjects</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="Videos" id="Videos">
+                    <label id="Videos">Videos</label>
+                </div>
+            </fieldset>
+            <p>Any comments or suggestions?</p>
+            <textarea ></textarea>
+            <button>Submit</button>
+        </div>
+    </body>
+</html>
