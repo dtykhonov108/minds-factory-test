@@ -7,16 +7,16 @@
 
     </head>
     <body>
-        <div class="divForm">
+        <div class="divForm"><form>
             <h1 align="center">Your personal Form</h1>
             <p><h2 align="center">Thank you for taking the time to improve your skills</h2></p>
             <br>
             <br>Name:
-            <br><input class="in" placeholder="Enter your name">
+            <br><input class="in" placeholder="Enter your name" name="inputName" required="required">
             <br>E-mail:
-            <br><input class="in" placeholder="Enter your e-mail">
+            <br><input class="in" placeholder="Enter your e-mail" name="inputEmail" required="required">
             <br>Age(optional):
-            <br><input class="in" placeholder="Enter your age">
+            <br><input class="in" placeholder="Enter your age" name="inputAge" required="required">
             <br>Which option best describes your currnet role?
             <br><select name="NAME" >
                 <option selected disabled>Select your current role</option>
@@ -24,7 +24,8 @@
                 <option>Full time job</option>
                 <option>Full time learner</option>
             </select>
-            <form>
+            
+            
             <p>Would you recommend Andrew to a friend?</p>
             <div class="inrad">
                 <input type="radio" id="recomended1" name="rec" value="Definitely">
@@ -35,7 +36,7 @@
                 <label for="recomneded3">Not sure</label>
             </div>
             
-             </form>
+             
              <fieldset>
                <legend>What would you like to see improved? (Check all that apply)</legend>
                 <div>
@@ -53,7 +54,9 @@
             </fieldset>
             <p>Any comments or suggestions?</p>
             <textarea ></textarea>
-            <button>Submit</button>
+            <script src="Form.js"></script>
+            <button onclick="getValidate()">Submit</button>
+        </form>
         </div>
     </body>
 </html>
