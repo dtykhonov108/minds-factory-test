@@ -1,0 +1,214 @@
+header {
+    background-color: black;
+    height: 40px;
+    color:aliceblue;
+    text-align: right;
+   width: 100%;
+}
+
+.li-header {
+  display:inline-flex;
+  list-style: none;  
+  font-size: 18px;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.li-menu{
+    list-style: none;
+    border:1px lightgray solid;
+    width:90%;
+    height:40px;
+    justify-content: space-between;
+}
+.div-li{
+    display:inline-flex;
+    margin-top: 12px;
+    margin-left: 10px;
+    width: 100%;
+}
+.div-li-name{
+    width:80%;
+}
+
+.ul-menu{
+    
+    padding-inline-start: 20px;
+}
+
+body {
+    background-color: lightgray;
+    font-family: sans-serif;
+    padding: 0px;
+}
+
+main {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    width:100%;
+    
+   
+}
+
+section{
+    background-color: white;
+    width:100%;
+    border-radius: 5px;   
+}
+
+.menu { 
+    display: flex;
+    width: 270px;
+    height: 400px; 
+    flex-direction: column;   
+    margin-right: 20px;
+}
+
+.films{
+    display: flex;
+    height: auto;
+    justify-content: center;
+    flex-direction: row;
+    
+}
+p{
+    color: white;
+    margin-left: 20px;
+    margin-top: 0px;
+    display:inline-flex;
+    margin-top: 10px;
+}
+
+
+input{
+    margin-left: 20px;
+    width: 75%;
+    height: 35px;
+    margin-top: 10px;
+    padding-left: 20px;
+}
+.div-main{
+    background-color: white;
+    padding:10px 20px 10px 20px;
+    width:60%;
+    border-radius: 5px;
+}
+figure{
+    text-align: center;
+    border:1px white solid;
+    margin-inline-start: 13px;
+    margin-inline-end: 13px;
+}
+.div-p{
+    background-color: orange;
+    height: 40px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+button{
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom:10px
+}
+.entry{
+    height: 40px;
+    background-color: orange;
+    border-radius: 5px;
+    border: none;
+    color:white;
+    width:70px;
+}
+.reg{
+    height: 40px;
+    border: orange 1px solid;
+    background-color: white;
+    color:orange;
+    border-radius: 5px;
+    margin-left: 27px;
+}
+
+.input-bottom{
+    margin-bottom: 10px;
+}
+.div-date{
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+.div-rank1{
+    background-color: rgb(66, 65, 65);
+    color:white;
+    width:25px;
+    border-radius: 5px; 
+    margin-left: 78px;
+    height: 20px;
+    padding-left: 3px;
+    padding-top: 3px;
+}
+.div-rank2{
+    background-color: rgb(66, 65, 65);
+    color:white;
+    width:25px;
+    border-radius: 5px; 
+    margin-left: 67px;
+    height: 20px;
+    padding-left: 3px;
+    padding-top: 3px;
+}
+.div-rank3{
+    background-color: rgb(66, 65, 65);
+    color:white;
+    width:25px;
+    border-radius: 5px; 
+    margin-left: 80px;
+    height: 20px;
+    padding-left: 3px;
+    padding-top: 3px;
+}
+.div-rank4{
+    background-color: rgb(66, 65, 65);
+    color:white;
+    width:25px;
+    border-radius: 5px; 
+    margin-left: 50px;
+    height: 20px;
+    padding-left: 3px;
+    padding-top: 3px;
+}
+.div-films{
+    position:absolute;
+    color:white;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    margin-left: 20px;
+    margin-top: 3px;
+}
+a{
+    text-decoration: none;
+}
+.entry:hover{
+ background-color: white;
+ color:orange;
+ border:orange 1px solid;
+ cursor: pointer;
+}
+.reg:hover{
+    background-color: orange;
+    color:white;
+    cursor: pointer;
+}
+.a-menu{
+    color:black;
+}
+.a-menu:hover{
+    color:orange;
+}
+.a-head{
+color:white;
+}
+.a-head:hover{
+color:lightgrey;
+}
+img:hover{
+    box-shadow: 0px 0px 10px 5px darkgrey; 
+}
