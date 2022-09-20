@@ -1,0 +1,84 @@
+body{
+    background-color:darkgrey;
+}
+
+.main{
+    border: 2px black solid;
+    background-color: rgb(87, 107, 170);
+    width: 300px;
+    height: 500px;
+    margin-left: 30%;
+    margin-top:50px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+}
+
+.display{
+    width: 250px;
+    height: 90px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:20px;
+    background-color: white; 
+    border-radius: 7px;
+    text-align: left;
+    font-family: sans-serif;
+    font-size: 26px;
+    text-align: end;
+}
+
+.div-main{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.section{
+    display: flex;
+    width:260px;
+    /* height: 80px; 
+    border:white 1px solid;  */
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-around;
+    padding:10px ;
+}
+
+.button{
+    width:50px;
+    height:50px;
+    border: white 1px solid;
+    background-color: rgb(50, 50, 110);
+    border-radius: 7px;
+    color:white;
+    font-size: 24px;
+    font-family:sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.long-button{
+    width:115px;
+    height:50px;
+    border: white 1px solid;
+    background-color: rgb(50, 50, 110);
+    border-radius: 7px;
+    color:white;
+    font-size: 24px;
+    font-family:sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.button:hover{
+    cursor:pointer;
+    background-color: rgb(32, 32, 70);
+}
+
+.long-button:hover{
+    cursor:pointer;
+    background-color: rgb(32, 32, 70);
+}

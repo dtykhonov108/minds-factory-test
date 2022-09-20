@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="calculator.css">
+        <meta charset="utf-8">
+    <title>Calculator</title>
+    </head>
+
+    <body>
+        <script src="../Calculator/calculator.js"></script>
+
+        <div class="main">
+
+            <input id="display" class="display"></input>
+                <script>
+                    var display=document.getElementById("display");
+                    display.value="";
+                    function inputAdd(numb){
+
+                        display.value=display.value+numb;
+                    }
+                    
+                    function reset(clear){
+                        
+                        display.value=clear;
+                    }
+                    
+                   
+
+                       /* function firstNumber(){
+                        var firstNumb=Number(display.value);
+                        display.value="";}
+                        
+                        function secondNumber(){
+                        var secondNumb=Number(display.value);
+                        }
+
+                        function plus(){
+                           return display.value=firstNumb+secondNumb;
+                         }*/
+                    function getEquals(){
+
+                            
+                            if (display.value.indexOf('+')>0){
+
+                                var indexPlus=display.value.indexOf('+');
+                                var numberOne=Number(display.value.slice(0,indexPlus));
+                                var numberTwo=Number(display.value.slice(indexPlus));
+                                var result=numberOne+numberTwo;
+                                 display.value=result;
+                                    
+                            } 
+
+                            if (display.value.indexOf('-')>0){
+
+                                var indexMinus=display.value.indexOf('-');
+                                var numberOneMinus=Number(display.value.slice(0,indexMinus));
+                                var numberTwoMinus=Number(display.value.slice(indexMinus+1));
+                                var resultMinus=numberOneMinus-numberTwoMinus;
+                                 display.value=resultMinus;
+                                } 
+
+                            if (display.value.indexOf('*')>0){
+
+                                var indexMulti=display.value.indexOf('*');
+                                var numberOneMulti=Number(display.value.slice(0,indexMulti));
+                                var numberTwoMulti=Number(display.value.slice(indexMulti+1));
+                                var resultMulti=numberOneMulti*numberTwoMulti;
+                                 display.value=resultMulti;
+                                } 
+
+                            if (display.value.indexOf('/')>0){
+
+                                var indexDivide=display.value.indexOf('/');
+                                var numberOneDivide=Number(display.value.slice(0,indexDivide));
+                                var numberTwoDivide=Number(display.value.slice(indexDivide+1));
+                                var resultDivide=numberOneDivide/numberTwoDivide;
+                                 display.value=resultDivide;
+                                } 
+
+                            if (display.value.indexOf('%')>0){
+
+                                var indexPercent=display.value.indexOf('%');
+                                var numberOnePercent=Number(display.value.slice(0,indexPercent));
+                                var numberTwoPercent=Number(display.value.slice(indexPercent+1));
+                                var resultPercent=numberOnePercent/100*numberTwoPercent;
+                                 display.value=resultPercent;
+                                }     
+                            
+                    }
+                </script>
+
+            <div class="div-main">
+            <div class="section">
+                <button id="clear" class="long-button" onclick="reset('')"> Clear </button>
+                <button id="percent" class="button" onclick="inputAdd('%')"> % </button>
+                <button id="divide" class="button" onclick="inputAdd('/')"> / </button>
+            </div>
+
+            <div class="section">
+                <button id="seven" class="button" onclick="inputAdd(7)"> 7 </button>
+                <button id="eight" class="button" onclick="inputAdd(8)"> 8 </button>
+                <button id="nine"  class="button" onclick="inputAdd(9)"> 9 </button>
+                <button id="multiply" class="button" onclick="inputAdd('*')"> * </button>
+            </div>
+
+            <div class="section">
+                <button id="four" class="button" onclick="inputAdd(4)"> 4 </button>
+                <button id="five" class="button" onclick="inputAdd(5)"> 5 </button>
+                <button id="six" class="button" onclick="inputAdd(6)"> 6 </button>
+                <button id="minus" class="button" onclick="inputAdd('-')"> - </button>
+            </div>
+
+            <div class="section">
+                <button id="one" class="button" onclick="inputAdd(1)"> 1 </button>
+                <button id="two" class="button" onclick="inputAdd(2)"> 2 </button>
+                <button id="three" class="button" onclick="inputAdd(3)"> 3 </button>
+                <button id="plus" class="button" onclick="inputAdd('+')"> + </button>
+            </div>
+
+            <div class="section">
+                <button id="zero" class="long-button" onclick="inputAdd(0)"> 0 </button>
+                <button id="dot" class="button" onclick="inputAdd('.')"> . </button>
+                <button id="equals" class="button" onclick="getEquals()"> = </button>
+            </div>
+            </div>
+        </div>
+    </body>
+</html>
