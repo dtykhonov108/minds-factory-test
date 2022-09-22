@@ -20,13 +20,24 @@
                             display.value='error';
                         }else{*/
 
-                            if('-'.includes(display.value.slice(-1)) && '-'.includes(numb)){
-                                display.value=display.value+numb;
-                            }
+                            if((['-','+','/','*']).includes(display.value.slice(-1)) && ['-'].includes(numb)){
 
-                            if('-'.includes(display.value.slice(-1)) && '.'.includes(numb)){
-                                display.value='-0'+numb;
+                                       
+                                        
+                                        display.value=display.value+numb;
+                                        
+
+                                     
+                                        /*display.value=display.value.slice(0,-1)+numb; */
+                                    
                             }
+                            if( (['+','-','*','/']).includes(display.value.slice(-2,-1)) && (['+','*','/']).includes(numb) ){
+                                            display.value=display.value.slice(0,-2)+numb;
+                                        }
+
+                            if( (['-']).includes(display.value.slice(-3,-2)) && (['-']).includes(display.value.slice(-2,-1)) &&(['-']).includes(numb)  ){
+                                            display.value=display.value.slice(0,-2)+numb;
+                                        }
 
                             if(((['+','-','*','/','%','.']).includes(display.value.slice(-1)))&&((['+','-','*','/','%','.']).includes(numb))){
                                 
@@ -35,22 +46,19 @@
                                      display.value=display.value+numb;
                                     }
 
-
-                            if(display.value.slice(0,1)==='.'){
-                                display.value='0'+display.value;
+                                    if('.'.includes(display.value.slice(numb))&&'.'.includes(display.value.slice(0,1))){
+                                display.value='0'+numb;
+                            }    
+                            if('-'.includes(display.value.slice(0,1)) && '.'.includes(display.value.slice(0,1))){
+                                display.value='-0'+numb;
                             }
-
-                            
-                             
-
-                     
-                            
+       
                     }
                     
-                    /*function prop(){
+                    function prop(){
                         
-                        display.value=-(6+6);
-                    }*/
+                        display.value=display.value.slice(-2,-1);
+                    }
                     function reset(clear){
                         
                         display.value=clear;
@@ -79,7 +87,37 @@
                             if('/0'.includes(display.value.slice(-2))){
                                     display.value='Error';
                             }
+                            
+                            if (display.value.indexOf('+')>0 && display.value.indexOf('-',1)>0){
 
+                                var indexPlusMinus=display.value.indexOf('+');
+                                var numberOnePlus=Number(display.value.slice(0,indexPlusMinus));
+                                var numberTwoPlus=Number(display.value.slice(indexPlusMinus+1));
+                                var resultPlus=numberOnePlus+numberTwoPlus;
+                                 display.value=resultPlus;
+                                    
+                            } 
+
+                            if (display.value.indexOf('*')>0 && display.value.indexOf('-',1)>0){
+
+                                var indexMultiMinus=display.value.indexOf('*');
+                                var numberOneMultiMinus=Number(display.value.slice(0,indexMultiMinus));
+                                var numberTwoMultiMinus=Number(display.value.slice(indexMultiMinus+1));
+                                var resultMultiMinus=numberOneMultiMinus*numberTwoMultiMinus;
+                                 display.value=resultMultiMinus;
+                                    
+                            } 
+
+                            if (display.value.indexOf('/')>0 && display.value.indexOf('-',1)>0){
+
+                                var indexDivideMinus=display.value.indexOf('/');
+                                var numberOneDivideMinus=Number(display.value.slice(0,indexDivideMinus));
+                                var numberTwoDivideMinus=Number(display.value.slice(indexDivideMinus+1));
+                                var resultDivideMinus=numberOneDivideMinus/numberTwoDivideMinus;
+                                 display.value=resultDivideMinus;
+                                    
+                            } 
+                            
                             if (display.value.indexOf('+')>0){
 
                                 var indexPlus=display.value.indexOf('+');
