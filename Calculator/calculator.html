@@ -73,7 +73,11 @@
 
                        
                             if((['/','+','-','*','%']).includes((display.value.slice(-1)))){
-                                    display.value='error';
+                                    display.value='Error';
+                            }
+
+                            if('/0'.includes(display.value.slice(-2))){
+                                    display.value='Error';
                             }
 
                             if (display.value.indexOf('+')>0){
