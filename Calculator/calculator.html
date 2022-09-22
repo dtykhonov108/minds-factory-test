@@ -16,10 +16,41 @@
                     var display=document.getElementById("display");
                     display.value="";
                     function inputAdd(numb){
+                        /*if((['*', '-','+','/'].includes(display.value.slice(-2))&&['*', '-','+','/'].includes(display.value.slice(-1)))===true){
+                            display.value='error';
+                        }else{*/
 
-                        display.value=display.value+numb;
+                            if('-'.includes(display.value.slice(-1)) && '-'.includes(numb)){
+                                display.value=display.value+numb;
+                            }
+
+                            if('-'.includes(display.value.slice(-1)) && '.'.includes(numb)){
+                                display.value='-0'+numb;
+                            }
+
+                            if(((['+','-','*','/','%','.']).includes(display.value.slice(-1)))&&((['+','-','*','/','%','.']).includes(numb))){
+                                
+                                display.value=display.value.slice(0,-1)+numb;
+                            } else{
+                                     display.value=display.value+numb;
+                                    }
+
+
+                            if(display.value.slice(0,1)==='.'){
+                                display.value='0'+display.value;
+                            }
+
+                            
+                             
+
+                     
+                            
                     }
                     
+                    /*function prop(){
+                        
+                        display.value=-(6+6);
+                    }*/
                     function reset(clear){
                         
                         display.value=clear;
@@ -40,7 +71,11 @@
                          }*/
                     function getEquals(){
 
-                            
+                       
+                            if((['/','+','-','*','%']).includes((display.value.slice(-1)))){
+                                    display.value='error';
+                            }
+
                             if (display.value.indexOf('+')>0){
 
                                 var indexPlus=display.value.indexOf('+');
@@ -50,16 +85,18 @@
                                  display.value=result;
                                     
                             } 
+                           
 
-                            if (display.value.indexOf('-')>0){
+                            if (display.value.indexOf('-',1)>0){
 
-                                var indexMinus=display.value.indexOf('-');
+                                var indexMinus=display.value.indexOf('-',1);
                                 var numberOneMinus=Number(display.value.slice(0,indexMinus));
                                 var numberTwoMinus=Number(display.value.slice(indexMinus+1));
                                 var resultMinus=numberOneMinus-numberTwoMinus;
                                  display.value=resultMinus;
                                 } 
 
+                                
                             if (display.value.indexOf('*')>0){
 
                                 var indexMulti=display.value.indexOf('*');
@@ -86,6 +123,7 @@
                                 var resultPercent=numberOnePercent/100*numberTwoPercent;
                                  display.value=resultPercent;
                                 }     
+                                    
                             
                     }
                 </script>
