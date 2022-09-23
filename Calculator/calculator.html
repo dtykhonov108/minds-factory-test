@@ -21,18 +21,15 @@
                         }else{*/
 
                             if((['-','+','/','*']).includes(display.value.slice(-1)) && ['-'].includes(numb)){
-
-                                       
+  
+                          display.value=display.value+numb;
                                         
-                                        display.value=display.value+numb;
-                                        
-
-                                     
-                                        /*display.value=display.value.slice(0,-1)+numb; */
+            
+                                 /*display.value=display.value.slice(0,-1)+numb; */
                                     
                             }
-                            if( (['+','-','*','/']).includes(display.value.slice(-2,-1)) && (['+','*','/']).includes(numb) ){
-                                            display.value=display.value.slice(0,-2)+numb;
+                            if( (['+','-','*','/']).includes(display.value.slice(-1)) && (['+','*','/']).includes(numb) ){
+                                            display.value=display.value.slice(0,-1)+numb;
                                         }
 
                             if( (['-']).includes(display.value.slice(-3,-2)) && (['-']).includes(display.value.slice(-2,-1)) &&(['-']).includes(numb)  ){
@@ -148,7 +145,7 @@
                                  display.value=resultMulti;
                                 } 
 
-                            if (display.value.indexOf('/')>0){
+                            if (display.value.indexOf('/',1)>0){
 
                                 var indexDivide=display.value.indexOf('/');
                                 var numberOneDivide=Number(display.value.slice(0,indexDivide));
