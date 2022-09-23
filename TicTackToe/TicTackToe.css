@@ -1,0 +1,67 @@
+
+
+.main{
+    height: 600px;
+    width: 600px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 50px;
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+
+.box{
+    height: 32.5%;
+    width: 32.5%;
+}
+
+#one{
+    border-right:black 4px solid;
+    border-bottom: black 4px solid;;
+}
+
+#two{
+    border-right:black 4px solid;
+    border-bottom: black 4px solid;
+    border-left: black 3px solid;
+}
+
+#three{
+    border-left:black 3px solid;
+    border-bottom: black 4px solid;
+}
+
+#four{
+    border-right:black 3px solid;
+    border-top: black 4px solid;
+    border-bottom: black 4px solid;
+}
+
+#five{
+    border:black 4px solid;
+}
+
+#six{
+    border-left:black 3px solid;
+    border-top: black 4px solid;
+    border-bottom:black 4px solid;
+}
+
+#seven{
+    border-right:black 3px solid;
+    border-top: black 3px solid; 
+}
+
+#eight{
+    border-right:black 4px solid;
+    border-top: black 3px solid;
+    border-left: black 4px solid;
+}
+
+#nine{
+    border-left:black 3px solid;
+    border-top: black 3px solid;
+}
