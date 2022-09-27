@@ -11,7 +11,6 @@
         <script>
              
                 var counter=0;
-                var alertCount=0;
                 var arrSheet=[null, null, null, null, null, null, null, null, null];
                 
                 
@@ -29,59 +28,34 @@
                         }
                         counter++;
                       
-                        if(arrSheet.slice(0,3).every(elem=> elem==='x')|| arrSheet.slice(3,6).every(elem=> elem==='x') || arrSheet.slice(6,9).every(elem=> elem==='x')){
+                        if( arrSheet.slice(0,3).every(elem=> elem==='x')||
+                            arrSheet.slice(3,6).every(elem=> elem==='x')||
+                            arrSheet.slice(6,9).every(elem=> elem==='x')||
+                            (arrSheet[0]==='x'&&arrSheet[4]==='x'&&arrSheet[8]==='x')||
+                            (arrSheet[0]==='x'&&arrSheet[3]==='x'&&arrSheet[6]==='x')||
+                            (arrSheet[1]==='x'&&arrSheet[4]==='x'&&arrSheet[7]==='x')||
+                            (arrSheet[2]==='x'&&arrSheet[5]==='x'&&arrSheet[8]==='x')||
+                            (arrSheet[2]==='x'&&arrSheet[4]==='x'&&arrSheet[6]==='x')
+                            ){
                             alert("X WIN!!!");
-                            alertCount++;
-                        }
-                        if(arrSheet[0]==='x'&&arrSheet[4]==='x'&&arrSheet[8]==='x'){
-                            alert('X WIN!!!')
-                            alertCount++;
-                        }
-                        if(arrSheet[0]==='x'&&arrSheet[3]==='x'&&arrSheet[6]==='x'){
-                            alert('X WIN!!!')
-                            alertCount++;
-                        }
-                        if(arrSheet[1]==='x'&&arrSheet[4]==='x'&&arrSheet[7]==='x'){
-                            alert('X WIN!!!')
-                            alertCount++;
-                        }
-                        if(arrSheet[2]==='x'&&arrSheet[5]==='x'&&arrSheet[8]==='x'){
-                            alert('X WIN!!!')
-                            alertCount++;
-                        }
-                        if(arrSheet[2]==='x'&&arrSheet[4]==='x'&&arrSheet[6]==='x'){
-                            alert('X WIN!!!')
-                            alertCount++;
-                        }
-
-                        if(arrSheet.slice(0,3).every(elem=> elem==='o')|| arrSheet.slice(3,6).every(elem=> elem==='o') || arrSheet.slice(6,9).every(elem=> elem==='o')){
-                            alert("O WIN!!!");
-                            alertCount++;
-                        }
-                        if(arrSheet[0]==='o'&&arrSheet[4]==='o'&&arrSheet[8]==='o'){
-                            alert('O WIN!!!')
-                            alertCount++;
-                        }
-                        if(arrSheet[0]==='o'&&arrSheet[3]==='o'&&arrSheet[6]==='o'){
-                            alert('O WIN!!!')
-                            alertCount++;
-                        }
-                        if(arrSheet[1]==='o'&&arrSheet[4]==='o'&&arrSheet[7]==='o'){
-                            alert('O WIN!!!')
-                            alertCount++;
-                        }
-                        if(arrSheet[2]==='o'&&arrSheet[5]==='o'&&arrSheet[8]==='o'){
-                            alert('O WIN!!!')
-                            alertCount++;
-                        }
-                        if(arrSheet[2]==='o'&&arrSheet[4]==='o'&&arrSheet[6]==='o'){
-                            alert('O WIN!!!')
-                            alertCount++;
-                        }
-                        if(arrSheet.every(elem=> elem!==null) && alertCount===0){
-                            alert('DRAW!!!')
-                        }
-                      
+                        }   else{
+                                if  (arrSheet.slice(0,3).every(elem=> elem==='o')||
+                                    arrSheet.slice(3,6).every(elem=> elem==='o')||
+                                    arrSheet.slice(6,9).every(elem=> elem==='o')||
+                                    (arrSheet[0]==='o'&&arrSheet[4]==='o'&&arrSheet[8]==='o')||
+                                    (arrSheet[0]==='o'&&arrSheet[3]==='o'&&arrSheet[6]==='o')||
+                                    (arrSheet[1]==='o'&&arrSheet[4]==='o'&&arrSheet[7]==='o')||
+                                    (arrSheet[2]==='o'&&arrSheet[5]==='o'&&arrSheet[8]==='o')||
+                                    (arrSheet[2]==='o'&&arrSheet[4]==='o'&&arrSheet[6]==='o')
+                                    ){
+                                        alert("O WIN!!!");
+                                        }
+                                        else{
+                                                if(arrSheet.every(elem=> elem!==null)){
+                                                alert('DRAW!!!')
+                                                }
+                                            }
+                                } 
                 }
 
                 function reset(){
