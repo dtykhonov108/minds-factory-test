@@ -8,16 +8,167 @@
 
     </head>
     <body>
+        <script>
+             
+                var counter=0;
+                var arrSheet=[];
+                
+                
+                function getClick(id){
+                        if( counter%2==0){
+                        var x=document.getElementById(id);
+                            x.style.backgroundImage="url(../TicTackToe/x-symbo.jpg)";
+                            arrSheet.push(`${id} x`);
+                            /*arrSheet.forEach(alert);*/
+
+                        }else {
+                            var o=document.getElementById(id) ;
+                            o.style.backgroundImage="url(../TicTackToe/o-symbol.png)";
+                            arrSheet.push(`${id} o`);
+
+                        }
+                        counter++;
+                        
+                        if(arrSheet.includes('one x') && arrSheet.includes('two x') && arrSheet.includes('three x')){
+                        alert("X WINN!!!");
+    
+                        }
+
+                        if(arrSheet.includes('one x') && arrSheet.includes('five x') && arrSheet.includes('nine x')){
+                        alert("X WINN!!!");
+    
+                        }
+
+                        if(arrSheet.includes('one x') && arrSheet.includes('four x') && arrSheet.includes('seven x')){
+                        alert("X WINN!!!");
+    
+                        }
+
+                        if(arrSheet.includes('two x') && arrSheet.includes('five x') && arrSheet.includes('eight x')){
+                        alert("X WINN!!!");
+    
+                        }
+
+                        if(arrSheet.includes('three x') && arrSheet.includes('six x') && arrSheet.includes('nine x')){
+                        alert("X WINN!!!");
+
+                        }
+
+                        if(arrSheet.includes('three x') && arrSheet.includes('five x') && arrSheet.includes('seven x')){
+                        alert("X WINN!!!");
+
+                        }
+
+                        if(arrSheet.includes('four x') && arrSheet.includes('five x') && arrSheet.includes('six x')){
+                        alert("X WINN!!!");
+
+                        }
+
+                        if(arrSheet.includes('seven x') && arrSheet.includes('eight x') && arrSheet.includes('nine x')){
+                        alert("X WINN!!!");
+
+                        }
+
+                        if(arrSheet.includes('one o') && arrSheet.includes('two o') && arrSheet.includes('three o')){
+                        alert("O WINN!!!");
+                        reset();
+                        }
+
+                        if(arrSheet.includes('one o') && arrSheet.includes('five o') && arrSheet.includes('nine o')){
+                        alert("O WINN!!!");
+    
+                        }
+
+                        if(arrSheet.includes('one o') && arrSheet.includes('four o') && arrSheet.includes('seven o')){
+                        alert("O WINN!!!");
+    
+                        }
+
+                        if(arrSheet.includes('two o') && arrSheet.includes('five o') && arrSheet.includes('eight o')){
+                        alert("O WINN!!!");
+    
+                        }
+
+                        if(arrSheet.includes('three o') && arrSheet.includes('six o') && arrSheet.includes('nine o')){
+                        alert("O WINN!!!");
+
+                        }
+
+                        if(arrSheet.includes('three o') && arrSheet.includes('five o') && arrSheet.includes('seven o')){
+                        alert("o WINN!!!");
+
+                        }
+
+                        if(arrSheet.includes('four o') && arrSheet.includes('five o') && arrSheet.includes('six o')){
+                        alert("O WINN!!!");
+
+                        }
+
+                        if(arrSheet.includes('seven o') && arrSheet.includes('eight o') && arrSheet.includes('nine o')){
+                        alert("O WINN!!!");
+
+                        }
+
+                        if(arrSheet.length===9){
+                            alert("DRAW !!!")
+                        }
+
+                       
+                }
+
+                function reset(){
+                    var one=document.getElementById("one");
+                    one.style.backgroundImage="none";
+                    var two=document.getElementById("two");
+                    two.style.backgroundImage="none";
+                    var three=document.getElementById("three");
+                    three.style.backgroundImage="none";
+                    var four=document.getElementById("four");
+                    four.style.backgroundImage="none";
+                    var five=document.getElementById("five");
+                    five.style.backgroundImage="none";
+                    var six=document.getElementById("six");
+                    six.style.backgroundImage="none";
+                    var seven=document.getElementById("seven");
+                    seven.style.backgroundImage="none";
+                    var eight=document.getElementById("eight");
+                    eight.style.backgroundImage="none";
+                    var nine=document.getElementById("nine");
+                    nine.style.backgroundImage="none";
+                    counter=0;
+                    arrSheet=[];
+                }   
+                    alert("Let's go?!"); 
+                    /*function reset(){
+                        var res=document.getElementsByClassName("box");
+                        res.style.backgroundImage="none";
+                    } */
+                   
+            
+            /*
+            var three=document.getElementById("three");         
+            var arrSheet=[one, two, three, four, five, six, seven, eight, nine];
+            var exampale=[one, two, three];
+            if (one.style.backgroundImage==two.style.backgroundImage){
+                alert("X WIN!!!");
+            }
+            alert("Let's go?!"); */
+           
+
+        </script>
+
+        <button class="reset" onclick="reset()"> reset </button>
         <div class="main">
-            <div class="box" id="one"></div>
-            <div class="box" id="two"></div>
-            <div class="box" id="three"></div>
-            <div class="box" id="four"></div>
-            <div class="box" id="five"></div>
-            <div class="box" id="six"></div>
-            <div class="box" id="seven"></div>
-            <div class="box" id="eight"></div>
-            <div class="box" id="nine"></div>
+            <div class="box" name="0" id="one" onclick="getClick('one')"></div>
+            <div class="box" name="2" id="two" onclick="getClick('two')"></div>
+            <div class="box" name="3" id="three" onclick="getClick('three')"></div>
+            <div class="box" name="4" id="four" onclick="getClick('four')"></div>
+            <div class="box" name="5" id="five" onclick="getClick('five')"></div>
+            <div class="box" name="6" id="six" onclick="getClick('six')"></div>
+            <div class="box" name="7" id="seven" onclick="getClick('seven')"></div>
+            <div class="box" name="8" id="eight" onclick="getClick('eight')"></div>
+            <div class="box" name="9" id="nine" onclick="getClick('nine')"></div>
         </div>
+        
     </body>
 </html>

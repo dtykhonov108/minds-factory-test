@@ -1,5 +1,7 @@
 
 
+
+
 .main{
     height: 600px;
     width: 600px;
@@ -10,6 +12,7 @@
     flex-wrap:wrap;
     justify-content: space-around;
     align-items: center;
+    background-color: white;
     
 }
 
@@ -20,48 +23,70 @@
 
 #one{
     border-right:black 4px solid;
-    border-bottom: black 4px solid;;
+    border-bottom: black 4px solid;
+    background-size: 100%;
 }
 
 #two{
     border-right:black 4px solid;
     border-bottom: black 4px solid;
     border-left: black 3px solid;
+    background-size: 100%;
 }
 
 #three{
     border-left:black 3px solid;
     border-bottom: black 4px solid;
+    background-size: 100%;
 }
 
 #four{
     border-right:black 3px solid;
     border-top: black 4px solid;
     border-bottom: black 4px solid;
+    background-size: 100%;
 }
 
 #five{
     border:black 4px solid;
+    background-size: 100%;
 }
 
 #six{
     border-left:black 3px solid;
     border-top: black 4px solid;
     border-bottom:black 4px solid;
+    background-size: 100%;
 }
 
 #seven{
     border-right:black 3px solid;
     border-top: black 3px solid; 
+    background-size: 100%;
 }
 
 #eight{
     border-right:black 4px solid;
     border-top: black 3px solid;
     border-left: black 4px solid;
+    background-size: 100%;
 }
 
 #nine{
     border-left:black 3px solid;
     border-top: black 3px solid;
+    background-size: 100%;
+}
+.reset{
+    margin-top: 100px;
+    margin-left: 130px;
+    position: absolute;
+    height: 75px;
+    width: 150px;
+    background-color: mediumseagreen;
+    color:white;
+    border-radius: 10px;
+    font-size: 30px;
+    font-family: sans-serif;
+    border: white 2px solid;
 }
