@@ -3,12 +3,89 @@ import { render } from '@testing-library/react';
 import React, { useEffect, useState } from 'react';
 import './App.css';
 
+ 
+function LiComp(props){
+
+
+  const [value, setValue] = useState('');
+  const [change, setChange] = useState(true);
   
+
+
+ 
+
+  function changeButton(){
+    setChange(!change);
+    
+  }
+  
+  const onChange = (event) =>  { 
+    setValue(event.target.value);
+  };
+
+  function replace(){
+    if(value.length !== 0){
+    const index = props.indexOf(value);
+     setValue(value);  
+     setChange(change);
+      }
+   
+  }
+  
+  if (change){
+     return (
+      <div className='full'>
+      <div className='item'> <li>{props.item}</li></div>
+      <div className='div-remove'>
+       <button onClick={() => changeButton(change)} className="edit">{change? "...":"V"}</button>
+        <button onClick={() => props.removePoint(props.item)} className="remove">X</button>
+      </div>
+    </div> 
+        );
+    } else return( 
+    
+      <div className='full'>
+      <div className='item'><input value={value} onChange={onChange} className="edit-input"></input> </div>
+      <div className='div-remove'>
+          <button onClick={() => props.replace(value, props.item, changeButton(change))} className="edit">V</button>
+         <button onClick={() => changeButton(change)} className="remove">{change? "R":"X"}</button>
+        </div>
+      </div> 
+    )
+}
+
+
+
+
+
 function App() {
  
     const [value, setValue] = useState('');
     const [arr, setArr] = useState([]);
+    const [changedItem, setChangedItem] = useState('');
+    //const [changedArr, setChangedArr] = useState(arr);
 
+    function edit(changedItem, index){
+      
+          setChangedItem(value);   
+          console.log(`chengedItem: ${changedItem}`);
+
+          const itemIndex = arr.indexOf(index);
+          console.log(itemIndex);
+        
+          const one = arr.slice(0, itemIndex);
+          const editArr = (one.concat(changedItem))
+          const two = arr.slice(itemIndex+1);
+          setArr(editArr.concat(two)); 
+         
+
+        /*
+          setChangedArr(arr.splice(itemIndex, 0, changedItem));
+          console.log(changedArr);*/
+       // setArr(arr.concat(changedItem));
+       // setArr(arr.splice(itemIndex, 0, changedItem));
+      
+    }
 
     const onChange = (event) =>{
       setValue(event.target.value);
@@ -22,8 +99,8 @@ function App() {
     }
     
     function removePoint(item){
-      let partOne = arr.slice(0, arr.indexOf(item));
-      let partTwo = arr.slice(arr.indexOf(item)+1);
+      const partOne = arr.slice(0, arr.indexOf(item));
+      const partTwo = arr.slice(arr.indexOf(item)+1);
       setArr(partOne.concat(partTwo)); 
     }
 
@@ -46,12 +123,7 @@ function App() {
                 {
                 arr.map((item)=>{
                   return(
-                   <div className='full'>
-                      <div className='item'> <li className='li'>{item}</li></div>
-                      <div className='div-remove'>
-                        <button onClick={() => removePoint(item)} className="remove">X</button>
-                      </div>
-                    </div> 
+                   <LiComp item={item}  removePoint={removePoint} replace={edit}/>     
                      );
                   }) 
                    
