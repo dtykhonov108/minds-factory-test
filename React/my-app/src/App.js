@@ -7,7 +7,7 @@ import './App.css';
 function LiComp(props){
 
 
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState(props.item);
   const [change, setChange] = useState(true);
   
 
