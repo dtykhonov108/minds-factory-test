@@ -11,9 +11,6 @@ function LiComp(props){
   const [change, setChange] = useState(true);
   
 
-
- 
-
   function changeButton(){
     setChange(!change);
     
@@ -47,7 +44,8 @@ function LiComp(props){
       <div className='full'>
       <div className='item'><input value={value} onChange={onChange} className="edit-input"></input> </div>
       <div className='div-remove'>
-          <button onClick={() => props.replace(value, props.item, changeButton(change))} className="edit">V</button>
+          <button onClick={() => {props.replace(value, props.item) 
+           changeButton(change)}} className="edit">V</button>
          <button onClick={() => changeButton(change)} className="remove">{change? "R":"X"}</button>
         </div>
       </div> 
@@ -56,34 +54,19 @@ function LiComp(props){
 
 
 
-
-
 function App() {
  
     const [value, setValue] = useState('');
     const [arr, setArr] = useState([]);
-    const [changedItem, setChangedItem] = useState('');
-    //const [changedArr, setChangedArr] = useState(arr);
+  
 
     function edit(changedItem, index){
-      
-          setChangedItem(value);   
-          console.log(`chengedItem: ${changedItem}`);
 
           const itemIndex = arr.indexOf(index);
-          console.log(itemIndex);
-        
           const one = arr.slice(0, itemIndex);
           const editArr = (one.concat(changedItem))
           const two = arr.slice(itemIndex+1);
           setArr(editArr.concat(two)); 
-         
-
-        /*
-          setChangedArr(arr.splice(itemIndex, 0, changedItem));
-          console.log(changedArr);*/
-       // setArr(arr.concat(changedItem));
-       // setArr(arr.splice(itemIndex, 0, changedItem));
       
     }
 
