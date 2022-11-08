@@ -26,7 +26,7 @@ function Result(props){
 
         <ResultDiv>
             <ResultH1>
-                 Варість стрижки {props.value}: {props.resultValue}
+                 Варість стрижки {props.value}: {props.resultValue} грн
             </ResultH1>
         </ResultDiv>
     )
