@@ -77,7 +77,6 @@ color:purple;
 
 
 function RoomPet (props) {
-    const [room, setRoom] = useState('');
     const [countPet, setCountPet] = useState();
     const [petProp, setPetProp] = useState(props.obj);
     let pet = 5;
@@ -85,21 +84,23 @@ function RoomPet (props) {
         setCountPet(pet);
     }
 
-    function addStandartProp(){
-        setPetProp( prev => {
-            return{
-                ...prev,
-                 room:'standart'}});
-    console.log(props.petProp);
+    function updateProps(key, value, res){
+      setPetProp( prev =>{
+        return{
+          ...prev,
+          [key]:value
+        }
+      });
+      console.log(props.petObj);
+      props.setResultValue(prev=> prev+res);
     }
 
-    function addLuxProp(){
-        setPetProp( prev => {
-            return{
-                ...prev,
-                 room:'lux'}});
-    console.log(props.petProp);
-    }
+    let standCat = {standart:4};
+    let standDog = {standart:5};
+
+    let luxCat = {lux:12};
+    let luxDog = {lux:15};
+
   return (
     <RoomMainDiv>
       
@@ -108,17 +109,25 @@ function RoomPet (props) {
         </RoomH1>
 
         <RoomButtonDiv>
-            <Standart onClick={() => {setRoom('standart')
-            console.log(` кімната: ${room}`);
-            props.addStandartProp();
-            props.recount(pet);
-            console.log(pet);}}>standart</Standart>
+            <Standart onClick={() => {
+           props.recount(pet);
+            if(props.petObj.type ==='cat'){
+              props.updateProps('room', standCat, 4);
+                }
+                else{
+                  props.updateProps('room', standDog, 5);
+                  }
+                }}>Стандарт</Standart>
 
-            <Lux onClick={() => {setRoom('lux')
-            console.log( ` кімната: ${room}`);
-            props.addLuxProp();
-            props.recount(pet);
-            console.log(pet);}}>lux</Lux>
+            <Lux onClick={() => { 
+           props.recount(pet);
+            if(props.petObj.type ==='cat'){
+              props.updateProps('room', luxCat, 12);
+                }
+                else{
+                  props.updateProps('room', luxDog, 15);
+                  }
+                }}>Люкс</Lux>
         </RoomButtonDiv>
 
     </RoomMainDiv>

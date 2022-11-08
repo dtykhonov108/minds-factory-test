@@ -29,7 +29,7 @@ const WeightButtonDiv = styled.div`
 
 const Small = styled.button`
 
-width:150px;
+width:170px;
 height:58px;
 margin-left:20px;
 border-radius:5px;
@@ -53,7 +53,7 @@ color:purple;
 
 const Middle = styled.button`
 
-width:150px;
+width:170px;
 height:58px;
 margin-left:20px;
 border-radius:5px;
@@ -77,7 +77,7 @@ color:purple;
 
 const Big = styled.button`
 
-width:150px;
+width:170px;
 height:58px;
 margin-left:20px;
 border-radius:5px;
@@ -102,67 +102,69 @@ color:purple;
 
 function WeightPet (props) {
 
-    const [weight, setWeight] = useState('');
     const [countPet, setCountPet] = useState();
     const [petProp, setPetProp] = useState(props.obj);
 
+    function updateProps(key, value, res){
+      setPetProp( prev =>{
+        return{
+          ...prev,
+          [key]:value
+        }
+      });
+      console.log(props.petObj);
+      props.setResultValue(prev=> prev+res);
+    }
 
-    let small = {weight:'small'};
-    let middle = {weight:'middle'};
-    let big = {weight:'big'};
+    let smallCat = {small:8};
+    let smallDog = {small:12};
+
+    let middleCat = {middle:15};
+    let middleDog = {middle:20};
+    
+    let bigCat = {big:20}
+    let bigDog = {big:30};
+
     let pet = 3;
 
-
-    function addSmallProp(){
-      setPetProp( prev => {
-          return{
-              ...prev,
-               weight:'small'}});
-  console.log(props.petProp);
-  }
-
-  function addMiddleProp(){
-    setPetProp( prev => {
-        return{
-            ...prev,
-             weight:'middle'}});
-console.log(props.petProp);
-}
-
-function addBigProp(){
-  setPetProp( prev => {
-      return{
-          ...prev,
-           weight:'big'}});
-console.log(props.petProp);
-}
 
   return (
     <MainWeight>
       
         <WeightH1>
-          Якого він розміру?
+          Якого розміру ваш улюблнець?
         </WeightH1>
 
         <WeightButtonDiv>
-          <Small onClick={() => {setWeight('small');
-          console.log(` розмір ${weight}`);
-          props.recount(pet);
-          console.log(pet);
-          props.addSmallProp();
-            }}>small</Small>
 
-          <Middle onClick={() => {setWeight('middle');
-          console.log(` розмір ${weight}`);
+          <Small onClick={() => {
           props.recount(pet);
-          console.log(pet)
-          props.addMiddleProp();}}>middle</Middle>
+          if(props.petObj.type ==='cat'){
+          props.updateProps('weight', smallCat, 8);
+            }
+            else{
+              props.updateProps('weight', smallDog, 12);
+              }
+            }}>Маленького</Small>
 
-          <Big onClick={() => {setWeight('big');
-          console.log( ` розмір ${weight}`);
-         props.recount(pet);
-         console.log(pet);
-          props.addBigProp();}}>big</Big>
+          <Middle onClick={() => {
+          props.recount(pet);
+          if(props.petObj.type ==='cat'){
+          props.updateProps('weight', middleCat, 15);
+            }
+            else{
+              props.updateProps('weight', middleDog, 20);
+              };}}>Середнього</Middle>
+
+          <Big onClick={() => {
+           props.recount(pet);
+           if(props.petObj.type ==='cat'){
+            props.updateProps('weight', bigCat, 20);
+              }
+              else{
+                props.updateProps('weight', bigDog, 30);
+                };}}>Великого</Big>
+
         </WeightButtonDiv>
     </MainWeight>
   );

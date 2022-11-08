@@ -77,7 +77,6 @@ color:purple;
 
 
 function CatAndDogApp (props) {
-    const [family, setFamily] = useState('');
     const [countPet, setCountPet] = useState();
     const [petProp, setPetProp] = useState(props.petObj);
     let count = 2;
@@ -85,20 +84,16 @@ function CatAndDogApp (props) {
     function recount(){
         setCountPet(count);
     }
-    function addPetDogProp(){
-        setPetProp( prev => {
-            return{
-                ...prev,
-                 type:'dog'}});
-    console.log(props.petProp);
-    }
 
-    function addPetCatProp(){
-        setPetProp( prev => {
-            return{
-                ...prev,
-                 type:'cat'}});
-    console.log(props.petProp);
+    function updateProps(key, value, res){
+      setPetProp( prev =>{
+        return{
+          ...prev,
+          [key]:value
+        }
+      });
+      console.log(props.petObj);
+      props.setResultValue(prev=> prev+res);
     }
 
   return (
@@ -109,23 +104,15 @@ function CatAndDogApp (props) {
         </MainH1>
 
         <ButtonDiv>
-            <CatButton onClick={() =>{setFamily('cat');
-            console.log(` це ${family}`);
-
+            <CatButton onClick={() =>{
             props.recount(count);
-            console.log(count);
+            props.updateProps('type', 'cat', 0);
+            }}>Котик</CatButton>
 
-            props.addPetCatProp();
-            }}>cat</CatButton>
-
-            <DogButton onClick={() => {setFamily('dog');
-            console.log(` це ${family}`);
-
+            <DogButton onClick={() => {
             props.recount(count);
-            console.log(count);
-
-            props.addPetDogProp();
-            }} > dog </DogButton>
+            props.updateProps('type', 'dog', 0);
+            }} > Песик </DogButton>
         </ButtonDiv>
 
     </MainDiv>

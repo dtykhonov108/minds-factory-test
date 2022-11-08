@@ -77,48 +77,59 @@ color:purple;
 
 
 function WoolPet (props) {
-    const [wool, setWool] = useState('');
-    const [petProp, setPetProp] = useState(props.obj);
     const [countPet, setCountPet] = useState();
+    const [petProp, setPetProp] = useState(props.obj);
     let pet = 4;
+
+    function updateProps(key, value, res){
+      setPetProp( prev =>{
+        return{
+          ...prev,
+          [key]:value
+        }
+      });
+      console.log(props.petObj);
+      props.setResultValue(prev=> prev+res);
+    }
+
+    let shortCat = {short:12};
+    let shortDog = {short:10};
+
+    let longCat = {long:20};
+    let longDog = {long:30};
+
+
     function recount(){
         setCountPet(pet);
     }
 
-    function addShortWoolProp(){
-        setPetProp( prev => {
-            return{
-                ...prev,
-                 wool:'short'}});
-    console.log(props.petProp);
-    }
-
-    function addLongWoolProp(){
-        setPetProp( prev => {
-            return{
-                ...prev,
-                 wool:'long'}});
-    console.log(props.petProp);
-    }
   return (
     <WoolMainDiv>
       
         <WoolH1>
-          Яка в нього довжина шерсті?
+          Яка довжина шерсті вашого улюбленця?
         </WoolH1>
 
         <WoolButtonDiv>
-            <ShortWool onClick={() => {setWool('short')
-            console.log(` шерсть: ${wool}`)
+            <ShortWool onClick={() => {
             props.recount(pet);
-            console.log(pet);
-            props.addShortWoolProp();}}>short</ShortWool>
+            if(props.petObj.type ==='cat'){
+              props.updateProps('wool', shortCat, 12);
+                }
+                else{
+                  props.updateProps('wool', shortDog, 10);
+                  }
+                }}>Коротка</ShortWool>
 
-            <LongWool onClick={() => {setWool('long')
-            console.log( ` шерсть: ${wool}`)
+            <LongWool onClick={() => {
             props.recount(pet);
-            console.log(pet);
-            props.addLongWoolProp();}}>long</LongWool>
+            if(props.petObj.type ==='cat'){
+              props.updateProps('wool', longCat, 20);
+                }
+                else{
+                  props.updateProps('wool', longDog, 30);
+                  }
+                }}>Довга</LongWool>
         </WoolButtonDiv>
 
     </WoolMainDiv>
