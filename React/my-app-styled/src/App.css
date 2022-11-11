@@ -36,3 +36,24 @@
     transform: rotate(360deg);
   }
 }
+
+
+
+.{
+  background-color: #282c34;
+  display: flex;
+  justify-content: space-evenly;
+  height:60vh;
+  width:40%;
+  border-bottom: black 3px solid;
+}
+
+.li{
+ list-style-type: none; 
+ background-color: green;
+ color:greenyellow;
+ border-radius: 10px;
+ font-size: 12px;
+ font-family: sans-serif;
+ display:inline;
+}
