@@ -8,6 +8,7 @@ import RoomPet from './room';
 import Result from './result';
 
 
+
 const Input  = styled.input`
 
 height:50px;
@@ -98,7 +99,6 @@ function App() {
           [key]:value
         }
       });
-      console.log(petObj);
       setResultValue(prev=> prev+res);
     }
 
@@ -119,6 +119,7 @@ function App() {
         <Button onClick={() => {
            setValue(value);
            console.log( `his name ${value}`);
+           console.log(objArr);
            setCount(count+1)}}>зберегти</Button>
       </JystifyDiv>
     </Div>
